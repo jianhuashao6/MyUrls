@@ -67,9 +67,8 @@ make all
 
 mkdir -p myurls
 cp -Rf public myurls/public
-
-cp -Rf build/${MYURLS_ARCH} myurls/linux-${ARCH_PRINT}-myurls
+mv -f /root/MyUrls/build/${MYURLS_ARCH} /root/MyUrls/myurls/linux-${ARCH_PRINT}-myurls
 tar -czvf linux-${ARCH_PRINT}-myurls.tar.gz myurls
-mv linux-${ARCH_PRINT}-myurls.tar.gz build/linux-${ARCH_PRINT}-myurls.tar.gz
-rm build/linux-${ARCH_PRINT}-myurls
-rm -rf myurls/*
+rm -rf /root/MyUrls/build/*
+mv -f linux-${ARCH_PRINT}-myurls.tar.gz build/linux-${ARCH_PRINT}-myurls.tar.gz
+rm -rf /root/MyUrls/build/myurls
