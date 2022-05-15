@@ -65,8 +65,8 @@ echo "开始打包MyUrls"
 cd /root/MyUrls
 make install
 make all
-mkdir -p myurls
-cp -Rf public myurls/public
+mkdir -p /root/MyUrls/myurls
+cp -Rf /root/MyUrls/public /root/MyUrls/myurls/public
 mv -f /root/MyUrls/build/${MYURLS_ARCH} /root/MyUrls/myurls/linux-${ARCH_PRINT}-myurls
 tar -czvf linux-${ARCH_PRINT}-myurls.tar.gz myurls
 rm -rf /root/MyUrls/build/*
