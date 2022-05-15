@@ -65,6 +65,10 @@ echo "开始编译MyUrls"
 cd /root/MyUrls
 make install
 make all
+if [[ $? -ne 0 ]];then
+  echo -e "\033[31m 编译MyUrls失败 \033[0m"
+  exit 1
+fi
 if [[ -f "/root/MyUrls/build/${MYURLS_ARCH}" ]]; then
   mkdir -p /root/MyUrls/myurls
   cp -Rf /root/MyUrls/public /root/MyUrls/myurls/public
