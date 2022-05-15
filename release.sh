@@ -64,6 +64,10 @@ chmod -R +x /root/MyUrls
 echo "开始编译MyUrls"
 cd /root/MyUrls
 make install
+if [[ $? -ne 0 ]];then
+  echo -e "\033[31m 编译MyUrls失败 \033[0m"
+  exit 1
+fi
 make all
 if [[ $? -ne 0 ]];then
   echo -e "\033[31m 编译MyUrls失败 \033[0m"
