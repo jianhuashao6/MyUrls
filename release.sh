@@ -3,9 +3,11 @@
 export arch=$(arch)
 if [[ $arch == "x86_64" || $arch == "x64" || $arch == "amd64" ]]; then
   ARCH_PRINT="linux64"
+  ARCH_PRINT2="amd64"
   MYURLS_ARCH="myurls-linux-amd64"
 elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
   ARCH_PRINT="aarch64"
+  ARCH_PRINT2="arm64"
   MYURLS_ARCH="myurls-arrch64"
 else
   echo -e "\033[31m 不支持此系统,只支持x86_64和arm64的系统 \033[0m"
@@ -28,9 +30,9 @@ apt-get remove -y golang-go
 apt-get remove -y --auto-remove golang-go
 rm -rf /usr/local/go
 
-wget -c https://golang.google.cn/dl/go1.15.15.linux-${ARCH_PRINT}.tar.gz -O /root/go1.15.15.linux-${ARCH_PRINT}.tar.gz
+wget -c https://golang.google.cn/dl/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -O /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
 
-tar -zxvf /root/go1.15.15.linux-${ARCH_PRINT}.tar.gz -C /usr/local/
+tar -zxvf /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -C /usr/local/
 
 cat >>"/etc/profile" <<-EOF
 export PATH=$PATH:/usr/local/go/bin
@@ -41,7 +43,7 @@ source /etc/profile
 apt-get install -y gcc automake autoconf libtool make
 
 if [[ `go version |grep -c "go1.15.15"` == '1' ]]; then
-  rm -rf /root/go1.15.15.linux-${ARCH_PRINT}.tar.gz
+  rm -rf /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
   echo "go环境部署完成"
 else
   rm -rf /usr/local/go
