@@ -26,24 +26,26 @@ fi
 apt-get update
 apt-get install -y socat curl wget git sudo
 
-apt-get remove -y golang-go
-apt-get remove -y --auto-remove golang-go
-rm -rf /usr/local/go
+if [[ `go version |grep -c "go1.15.15"` -ge '0' ]]; then
+  apt-get remove -y golang-go
+  apt-get remove -y --auto-remove golang-go
+  rm -rf /usr/local/go
 
-wget -c https://github.com/281677160/MyUrls/releases/download/v1.10/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -O /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
+  wget -c https://github.com/281677160/MyUrls/releases/download/v1.10/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -O /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
 
-tar -zxvf /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -C /usr/local/
+  tar -zxvf /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -C /usr/local/
 
-sed -i '/usr\/local\/go\/bin/d' "/etc/profile"
+  sed -i '/usr\/local\/go\/bin/d' "/etc/profile"
 cat >>"/etc/profile" <<-EOF
 export PATH=$PATH:/usr/local/go/bin
 EOF
 
-source /etc/profile
+  source /etc/profile
+fi
 
 apt-get install -y gcc automake autoconf libtool make
 
-if [[ `go version |grep -c "go1.15.15"` == '1' ]]; then
+if [[ `go version |grep -c "go1.15.15"` -ge '1' ]]; then
   rm -rf /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
   echo "go环境部署完成"
 else
