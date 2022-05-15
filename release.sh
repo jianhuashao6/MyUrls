@@ -84,3 +84,7 @@ if [[ -f "/root/MyUrls/build/${MYURLS_ARCH}" ]]; then
 else
   echo -e "\033[31m 编译MyUrls失败 \033[0m"
 fi
+if [[ -f "/root/MyUrls/build/linux-${ARCH_PRINT}-myurls.tar.gz" ]]; then
+  echo -e "\033[32m 编译MyUrls完成 \033[0m"
+  echo -e "\033[32m 已存放在/root/MyUrls/build文件夹里面 \033[0m"
+fi
