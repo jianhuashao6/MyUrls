@@ -61,14 +61,18 @@ if [[ $? -ne 0 ]];then
 fi
 chmod -R +x /root/MyUrls
 
-echo "开始打包MyUrls"
+echo "开始编译MyUrls"
 cd /root/MyUrls
 make install
 make all
-mkdir -p /root/MyUrls/myurls
-cp -Rf /root/MyUrls/public /root/MyUrls/myurls/public
-mv -f /root/MyUrls/build/${MYURLS_ARCH} /root/MyUrls/myurls/linux-${ARCH_PRINT}-myurls
-tar -czvf linux-${ARCH_PRINT}-myurls.tar.gz myurls
-rm -rf /root/MyUrls/build/*
-mv -f linux-${ARCH_PRINT}-myurls.tar.gz build/linux-${ARCH_PRINT}-myurls.tar.gz
-rm -rf /root/MyUrls/build/myurls
+if [[ -f "/root/MyUrls/build/${MYURLS_ARCH}" ]]; then
+  mkdir -p /root/MyUrls/myurls
+  cp -Rf /root/MyUrls/public /root/MyUrls/myurls/public
+  mv -f /root/MyUrls/build/${MYURLS_ARCH} /root/MyUrls/myurls/linux-${ARCH_PRINT}-myurls
+  tar -czvf linux-${ARCH_PRINT}-myurls.tar.gz myurls
+  rm -rf /root/MyUrls/build/*
+  mv -f linux-${ARCH_PRINT}-myurls.tar.gz build/linux-${ARCH_PRINT}-myurls.tar.gz
+  rm -rf /root/MyUrls/build/myurls
+else
+  echo -e "\033[31m 编译MyUrls失败 \033[0m"
+fi
