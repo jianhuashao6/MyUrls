@@ -61,12 +61,10 @@ if [[ $? -ne 0 ]];then
 fi
 chmod -R +x /root/MyUrls
 
-cd /root/MyUrls
 echo "开始打包MyUrls"
-
+cd /root/MyUrls
 make install
 make all
-
 mkdir -p myurls
 cp -Rf public myurls/public
 mv -f /root/MyUrls/build/${MYURLS_ARCH} /root/MyUrls/myurls/linux-${ARCH_PRINT}-myurls
