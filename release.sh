@@ -49,6 +49,7 @@ else
   exit 1
 fi
 
+rm -rf /root/MyUrls
 git clone https://github.com/CareyWang/MyUrls /root/MyUrls
 if [[ $? -ne 0 ]];then
   echo -e "\033[31m MyUrls源码下载失败，请检查网络 \033[0m"
