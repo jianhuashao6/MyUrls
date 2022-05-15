@@ -47,7 +47,6 @@ apt-get install -y gcc automake autoconf libtool make
 
 if [[ `go version |grep -c "go1.15.15"` -ge '1' ]]; then
   rm -rf /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
-  echo "go环境部署完成"
 else
   rm -rf /usr/local/go
   echo "go环境部署失败"
@@ -55,6 +54,7 @@ else
 fi
 
 rm -rf /root/MyUrls
+echo "开始打包MyUrls"
 git clone https://github.com/CareyWang/MyUrls /root/MyUrls
 if [[ $? -ne 0 ]];then
   echo -e "\033[31m MyUrls源码下载失败，请检查网络 \033[0m"
