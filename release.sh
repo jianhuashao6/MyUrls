@@ -26,7 +26,7 @@ fi
 apt-get update
 apt-get install -y socat curl wget git sudo
 
-if [[ `go version |grep -c "go1.15.15"` -ge '0' ]]; then
+if [[ `go version |grep -c "go1.15.15"` == '0' ]]; then
   apt-get remove -y golang-go
   apt-get remove -y --auto-remove golang-go
   rm -rf /usr/local/go
