@@ -59,7 +59,7 @@ if [[ $? -ne 0 ]];then
   echo -e "\033[31m MyUrls源码下载失败，请检查网络 \033[0m"
   exit 1
 fi
-chmod -R +x /root/MyUrls
+chmod -R 775 /root/MyUrls
 
 echo "开始编译MyUrls"
 cd /root/MyUrls
