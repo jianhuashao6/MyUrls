@@ -34,6 +34,7 @@ wget -c https://golang.google.cn/dl/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -O /ro
 
 tar -zxvf /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -C /usr/local/
 
+sed -i '/PATH=$PATH:/usr/local/go/bin/d' "/etc/profile"
 cat >>"/etc/profile" <<-EOF
 export PATH=$PATH:/usr/local/go/bin
 EOF
