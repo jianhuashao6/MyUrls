@@ -20,7 +20,6 @@ else
 fi
 
 apt-get update
-apt-get install -y gcc automake autoconf libtool make
 
 git clone https://github.com/CareyWang/MyUrls /root/MyUrls
 chmod -R +x /root/MyUrls
@@ -40,6 +39,8 @@ EOF
 source /etc/profile
 
 go version
+
+apt-get install -y gcc automake autoconf libtool make
 
 cd /root/MyUrls
 
