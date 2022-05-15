@@ -54,7 +54,6 @@ else
 fi
 
 rm -rf /root/MyUrls
-echo "开始打包MyUrls"
 git clone https://github.com/CareyWang/MyUrls /root/MyUrls
 if [[ $? -ne 0 ]];then
   echo -e "\033[31m MyUrls源码下载失败，请检查网络 \033[0m"
@@ -63,6 +62,7 @@ fi
 chmod -R +x /root/MyUrls
 
 cd /root/MyUrls
+echo "开始打包MyUrls"
 
 make install
 make all
