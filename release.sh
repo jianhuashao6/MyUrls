@@ -30,8 +30,8 @@ if [[ `go version |grep -c "go1.15.15"` == '0' ]]; then
   apt-get remove -y golang-go
   apt-get remove -y --auto-remove golang-go
   rm -rf /usr/local/go
-
-  wget -c https://github.com/281677160/MyUrls/releases/download/v1.10/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -O /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
+  
+  wget -c https://github.com/281677160/MyUrls/releases/download/v1.0/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -O /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
 
   tar -zxvf /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -C /usr/local/
 
