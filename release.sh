@@ -19,7 +19,7 @@ if [[ "$(. /etc/os-release && echo "$ID")" == "ubuntu" ]]; then
 elif [[ "$(. /etc/os-release && echo "$ID")" == "debian" ]]; then
   echo -e "\033[32m ${ARCH_PRINT}_debian \033[0m"
 else
-   echo -e "\033[31m 不支持该系统 \033[0m"
+   echo -e "\033[31m 不支持该系统,只支持ubuntu和debian系统 \033[0m"
    exit 1
 fi
 
@@ -30,8 +30,8 @@ if [[ `go version |grep -c "go1.15.15"` == '0' ]]; then
   apt-get remove -y golang-go
   apt-get remove -y --auto-remove golang-go
   rm -rf /usr/local/go
-
-  wget -c https://github.com/281677160/MyUrls/releases/download/v1.10/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -O /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
+  
+  wget -c https://ghproxy.com/https://github.com/281677160/MyUrls/releases/download/v1.0/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -O /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz
 
   tar -zxvf /root/go1.15.15.linux-${ARCH_PRINT2}.tar.gz -C /usr/local/
 
@@ -54,7 +54,7 @@ else
 fi
 
 rm -rf /root/MyUrls
-git clone https://github.com/281677160/MyUrls /root/MyUrls
+git clone https://ghproxy.com/https://github.com/281677160/MyUrls /root/MyUrls
 if [[ $? -ne 0 ]];then
   echo -e "\033[31m MyUrls源码下载失败，请检查网络 \033[0m"
   exit 1
