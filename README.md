@@ -1,18 +1,24 @@
 # MyUrls
 
-基于 golang1.15 与 Redis 实现的本地短链接服务，用于缩短请求链接与短链接还原。
+基于 Go 1.20 与 Redis 实现的本地短链接服务，用于缩短请求链接与短链接还原。
 
 ## Table of Contents
 
+- [MyUrls](#myurls)
+  - [Table of Contents](#table-of-contents)
 - [Update](#update)
 - [Dependencies](#dependencies)
-- [Docker](#Docker)
-- [Install](#install)
-- [Usage](#usage)
-- [API](#api)
-- [Maintainers](#maintainers)
-- [Contributing](#contributing)
-- [License](#license)
+  - [Docker](#docker)
+  - [Deploy Online](#deploy-online)
+    - [Deploy on Railway](#deploy-on-railway)
+      - [部署](#部署)
+      - [添加域名](#添加域名)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [API](#api)
+  - [Maintainers](#maintainers)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 # Update
 
@@ -71,28 +77,25 @@ docker-compose up -d
 
 在Cloudflare中添加域名，并配置SSL/TLS为完全及以上，并在Railway中接入该域名，参考[官方文档](https://docs.railway.app/deploy/exposing-your-app#lets-encrypt-ssl-certificates)。
 
-## Install
+### 一键编译可执行文件
 
-安装项目依赖
-
-```shell script
-make install
-```
-
-生成可执行文件，目录位于 build/ 。默认当前平台，其他平台请参照 Makefile 或执行对应 go build 命令。
+ubuntu的amd64平台编译myurls-linux-amd64，ubuntu的arm64平台编译myurls-linux-arm64。
 
 ```shell script
-bash release.sh
+sudo bash -c 'bash <(curl -s https://raw.githubusercontent.com/281677160/MyUrls/master/release.sh)'
 ```
 
 ## Usage
 
-前往 [Release](https://github.com/CareyWang/MyUrls/releases) 下载对应平台可执行文件。
+运行对应平台可执行文件，比如amd64的，arm64平台把amd64改成arm64即可。
 
 ```shell script
-./build/linux-amd64-myurls -h 
+cd /root && sudo rm -rf build
+cp -Rf /root/MyUrls/myurls /root/build && sudo chmod -R +x /root/build && cd build
 
-Usage of ./build/linux-amd64-myurls:
+./myurls-linux-amd64 -h 
+
+Usage of ./myurls-linux-amd64:
   -conn string
         Redis连接，格式: host:port (default "127.0.0.1:6379")
   -domain string
